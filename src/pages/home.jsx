@@ -14,7 +14,7 @@ const Home = () => {
         setAnalyse(true);
         const inp = { inputs: sentence, options: { wait_for_model: true } };
         const request = await axios.post(
-          "https://api-inference.huggingface.co/models/RahulRST/emoTer",
+          "https://api-inference.huggingface.co/models/facebook/wav2vec2-base-960h",
           inp,
           {
             headers:
@@ -45,7 +45,7 @@ const Home = () => {
         if(e.response.status === 400)
         {
           setOutput({
-            label: "Enter text to Analyse",
+            label: "Upload Valid Audio File",
             score: 1
           })
           setAnalyse(false);
