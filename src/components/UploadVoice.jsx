@@ -1,4 +1,4 @@
-import { Component }from 'react'
+import { useEffect,Component }from 'react'
 import axios from 'axios';
 import Loader from './loader';
 
@@ -9,8 +9,10 @@ class UploadVoice extends Component {
         this.state ={
             file: null,
             analyse: false,
-            backend: import.meta.env.VITE_BACKEND_URL
+            backend: import.meta.env.VITE_BACKEND_URL,
+            paragraph: null
         };
+        localStorage.setItem("Paragraph",null);
         this.onFormSubmit = this.onFormSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
     }
@@ -27,7 +29,15 @@ class UploadVoice extends Component {
         axios.post(this.state.backend+"/analyse",formData,config)
             .then((response) => {
                 console.log(response.data);
-                this.setState({analyse:false});
+                localStorage.setItem("Paragraph",response.data.text);
+                axios.post(this.state.backend+"/summarize",{"paragraph":response.data.text})
+                    .then((response) => {
+                        console.log(response.data);
+                        this.setState({analyse:false});
+                    }).catch((error) => {
+                        console.log(error);
+                        this.setState({analyse:false});
+                });
             }).catch((error) => {
                 console.log(error);
                 this.setState({analyse:false});
