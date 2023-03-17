@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useRef, useState,useCallback } from "react";
+import { useDropzone } from "react-dropzone";
 import axios from "axios"
 
 const Home = () => {
@@ -7,6 +8,11 @@ const Home = () => {
     const [ analyse, setAnalyse ] = useState();
     const [ output, setOutput ] = useState();
     const analyser = useRef();
+    const onDrop = useCallback(acceptedFiles => {
+      // Do something with the files
+      console.log("File accepted")
+    }, [])
+    const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
 
     const queryVoice = async () => {
       try
@@ -112,6 +118,15 @@ const Home = () => {
       <div className="flex flex-col gap-10 items-center">
         <h1 className="text-center text-sky-700 text-4xl">ScribNote</h1>
         <input className='bg-transparent rounded-xl shadow-xl shadow-sky-900 border-solid border-2 p-6' type="text" placeholder='Type it out' onChange={(e) => setSentence(e.target.value)} />
+        <div {...getRootProps()}>
+      <input {...getInputProps()} />
+      {
+        isDragActive ?
+          <p>Drop the files here ...</p> :
+          <p>Drag 'n' drop some files here, or click to select files</p>
+      }
+    </div>
+
         <button ref={analyser} className="border-2 shadow-xl shadow-sky-900 rounded-xl px-4 py-2 hover:scale-110 active:scale-90" onClick={queryVoice}>
           { analyse?<Loader />:<p>Analyse</p>}</button>
       </div>
