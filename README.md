@@ -1,1 +1,1 @@
-"# ScribNote" 
+# ScribNote
