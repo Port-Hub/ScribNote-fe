@@ -5,20 +5,18 @@ import {
     View,
     StyleSheet,
     PDFViewer,
-    Image,
   } from "@react-pdf/renderer";
-import { useEffect } from "react";
-  const styles = StyleSheet.create({
+import { useState,useEffect } from "react";
+
+const styles = StyleSheet.create({
     page: {
-      backgroundColor: "white",
       color: "black",
-      marginTop: 60,
+      margin: 60,
       fontSize: 12,
     },
     section: {
-      margin: 5,
+      margin: 10,
       padding: 2,
-      paddingLeft: 60,
     },
     image: {
         width: 500,
@@ -38,30 +36,19 @@ import { useEffect } from "react";
       console.log(sessionStorage.getItem("Summary"));
       }, []);
     return (
-      <PDFViewer style={styles.viewer}>
-        {/* Start of the document*/}
+      <PDFViewer 
+        style={styles.viewer}
+      >
         <Document>
-          {/*render a single page*/}
-          <Page size="A4" style={styles.page}>
-            {/* <View style={styles.section}>
-              <Text>Hello</Text>
-            </View>
 
-
-
-            <View style={styles.section}>
-              <Text>World</Text>
-            </View>
-            <View style={styles.section}>
-              <Text>This is Rahul</Text>
-            </View>
-            <View style={styles.section}>
-            </View>
-            <View style={styles.section}>
-              <Text>I'm here to do nthg</Text> 
-            </View>*/}
-            <View style={styles.section}>
-              <Text>{content}</Text>
+          <Page 
+            size="A4" 
+            style={styles.page}
+          >
+            <View 
+            //  style={styles.section}
+            >
+              <Text className = "flex">{content}</Text>
             </View>
           </Page>
         </Document>
