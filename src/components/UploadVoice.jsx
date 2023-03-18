@@ -1,4 +1,4 @@
-import { useEffect,Component }from 'react'
+import { Component }from 'react'
 import axios from 'axios';
 import Loader from './loader';
 
