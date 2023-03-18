@@ -6,6 +6,7 @@ import {
     Outlet
 } from "react-router-dom"
 import Home from './pages/home';
+import Sample from './pages/sample';
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
             <Routes>
                 <Route element={<Layout><Outlet /></Layout>}>
                     <Route path="/" element={<Home />} />
+                    <Route path="/Sample" element={<Sample/>} />
                 </Route>
             </Routes>
         </Router>
