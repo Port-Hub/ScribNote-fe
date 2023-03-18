@@ -7,13 +7,13 @@ import {
     PDFViewer,
     Image,
   } from "@react-pdf/renderer";
-  // Create styles,
+import { useEffect } from "react";
   const styles = StyleSheet.create({
     page: {
       backgroundColor: "white",
       color: "black",
       marginTop: 60,
-      //backgroundImage: url(sampleImg),
+      fontSize: 12,
     },
     section: {
       margin: 5,
@@ -32,16 +32,23 @@ import {
   
   // Create Document Component
   function Sample() {
+    const[content,setContent] = useState();
+    useEffect(() => {
+      setContent(sessionStorage.getItem("Summary"));
+      console.log(sessionStorage.getItem("Summary"));
+      }, []);
     return (
       <PDFViewer style={styles.viewer}>
         {/* Start of the document*/}
         <Document>
           {/*render a single page*/}
           <Page size="A4" style={styles.page}>
-            <View style={styles.section}>
+            {/* <View style={styles.section}>
               <Text>Hello</Text>
-              {/* <img src = {imgz}></img> */}
             </View>
+
+
+
             <View style={styles.section}>
               <Text>World</Text>
             </View>
@@ -49,14 +56,12 @@ import {
               <Text>This is Rahul</Text>
             </View>
             <View style={styles.section}>
-              <Image style={styles.image} src="/border.png">hi</Image> 
             </View>
             <View style={styles.section}>
-              <Text>I'm here to do nthg</Text>
-              <Image style={styles.image} src="/border.png"/> 
-            </View>
+              <Text>I'm here to do nthg</Text> 
+            </View>*/}
             <View style={styles.section}>
-              <Text>I've lot of work to do still I like to waste time</Text>
+              <Text>{content}</Text>
             </View>
           </Page>
         </Document>

@@ -50,11 +50,6 @@ class UploadVoice extends Component {
 
     render() {
         return (
-            // <>
-            //     {audio !== null ?
-            //           <p>The Audio File is Uploaded ... </p> :
-            //           <input type={"file"} name="audio" onInput={(e) => onDrop(e.target.files)} className="border-2 shadow-xl bg-transparent shadow-sky-900 rounded-xl px-4 py-2" />
-            //     }
             <form encType="multipart/form-data" onSubmit={this.onFormSubmit}>
                 <div className="flex flex-col gap-10 items-center">
                     <h1 className="text-center text-sky-700 text-4xl">ScribNote</h1>
