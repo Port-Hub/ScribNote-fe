@@ -12,7 +12,7 @@ class UploadVoice extends Component {
             backend: import.meta.env.VITE_BACKEND_URL,
             paragraph: null
         };
-        localStorage.setItem("Paragraph",null);
+        sessionStorage.setItem("Summary",null);
         this.onFormSubmit = this.onFormSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
     }
@@ -33,6 +33,7 @@ class UploadVoice extends Component {
                 axios.post(this.state.backend+"/summarize",{"paragraph":response.data.text})
                     .then((response) => {
                         console.log(response.data);
+                        sessionStorage.setItem("Summary",response.data.body.summary);
                         this.setState({analyse:false});
                     }).catch((error) => {
                         console.log(error);
