@@ -8,7 +8,7 @@ import {
 import Home from './pages/home';
 import Sample from './pages/sample';
 import Login from './pages/login';
-
+import Register from './pages/Register';
 
 const App = () => {
     return(
@@ -18,6 +18,7 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/Sample" element={<Sample/>} />
                     <Route path="/Login" element={<Login/>} />
+                    <Route path="/Register" element={<Register/>} />
                 </Route>
             </Routes>
         </Router>
