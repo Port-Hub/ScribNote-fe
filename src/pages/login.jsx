@@ -7,7 +7,7 @@ const Login = () => {
                 <input type= "text" className="border-2 border-black rounded-md p-2" placeholder="Username"></input>
             </div>
             <div className="flex flex-row">
-                <img src = "/password.png" className="h-10"></img>
+                <img src = "/lock.png" className="h-10"></img>
                 <input type="password" className="border-2 border-black rounded-md p-2" placeholder="Password"></input>
             </div>
             <a className="text-xs underline italic">Forgot password</a>
