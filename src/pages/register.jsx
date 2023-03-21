@@ -18,7 +18,13 @@ const Register = () => {
                 <p className="text-wrap">Confirm Password</p>
                 <input type="password" className="border-2 border-black rounded-md p-2" placeholder="Confirm Password"></input>
             </div>
-        </div>
+            {/* <div className="gap-x-4 justify-between content-center"> */}
+            <div className="flex flex-row items-center">
+            <button type="submit"  className=" border-2 shadow-xl shadow-sky-900 rounded-xl px-4 py-2 hover:scale-110 active:scale-90">
+                        <p>REGISTER</p></button>
+            </div>
+            <span>Already have an account? <a className="text-xs underline italic">Sign up</a></span>
+        </div>  
 
     )
 }
