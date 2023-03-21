@@ -8,6 +8,10 @@ const Profile = () => {
                 <p>Username</p>
                 <p placeholder="Username">RAHUL</p>
       </div>
+      <div className="flex flex-row gap-2 gap-x-4 justify-between">
+                <p>EMAIL</p>
+                <p placeholder="Email">rahuljeyaraj@gmail.com</p>
+      </div>
     </div>
   </div>
     )
