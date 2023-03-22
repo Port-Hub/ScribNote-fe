@@ -12,6 +12,13 @@ const Profile = () => {
                 <p>EMAIL</p>
                 <p placeholder="Email">rahuljeyaraj@gmail.com</p>
       </div>
+      <div className="card w-96 bg-base-100 shadow-xl image-full">
+  <div className="flex flex-row card-body">
+    <h2 className="card-title">PDF NAME</h2>
+    <p>DATE</p>
+    <div className="card-actions justify-end"></div>
+  </div>
+</div>
     </div>
   </div>
     )
