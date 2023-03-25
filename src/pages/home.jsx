@@ -1,8 +1,8 @@
 import { Component }from 'react'
 import { Link } from 'react-router-dom';
-import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import Loader from '../components/loader';
+import StyleDrop from '../components/styledrop';
 
 class Home extends Component {
 
@@ -10,6 +10,7 @@ class Home extends Component {
         super(props);
         this.state ={
             file: null,
+            list: null,
             analyse: false,
             message: null,
             backend: import.meta.env.VITE_BACKEND_URL,
@@ -21,7 +22,11 @@ class Home extends Component {
 
     onDrop = (acceptedFiles) => {
         this.setState({file:acceptedFiles[0]});
-        console.log(acceptedFiles);
+        this.setState({list : acceptedFiles.map(file => (
+            <li key={file.path}>
+              {file.path} - {file.size} bytes
+            </li>
+          ))});
       }
 
     onFormSubmit(e){
@@ -62,15 +67,7 @@ class Home extends Component {
                 <div className="flex flex-col gap-10 items-center">
                     <h1 className="text-center text-sky-700 text-4xl">ScribNote</h1>
                     <h1 className="text-center text-sky-700 text-xl">File Upload</h1>
-
-                   {this.state.file === null | undefined?<Dropzone onDrop={this.onDrop}>
-                        {({getRootProps, getInputProps}) => (
-                            <div className="flex flex-col p-10 rounded-md border-sky-800 border-2  border-dashed" {...getRootProps()}>
-                            <input {...getInputProps()} />
-                            Click me to upload a file!
-                            </div>
-                        )}
-                    </Dropzone>:<p>File is Uploaded</p>}
+                    <StyleDrop setFile={this.onDrop} files={this.state.list} />
                     {this.state.message !== null | undefined?<p className='text-sky-600 text-md '>{this.state.message}</p>:""}
                     {sessionStorage.getItem("Summary")?<></>:
                     <button type="submit"  className="border-2 shadow-xl shadow-sky-900 rounded-xl px-4 py-2 hover:scale-110 active:scale-90">
