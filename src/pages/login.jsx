@@ -24,7 +24,7 @@ const Login = () => {
             if(output.success)
             {
                 localStorage.setItem("token",output.token);
-                navigate("/");
+                navigate("/analyse");
             }
         }).catch((err) => {
             console.log(err);
