@@ -2,7 +2,7 @@ import { faEye, faEyeSlash, faLock, faUser } from "@fortawesome/free-solid-svg-i
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
 
@@ -33,32 +33,31 @@ const Login = () => {
 
     return (
         <div className='flex flex-col gap-4 p-10'>
-            <h2 className="text-center font-serif text-xl">ScribNotes</h2>
+            <h2 className="text-center text-primary font-serif text-xl">ScribNotes</h2>
             <div className="flex flex-row gap-x-4 items-center">
-                <FontAwesomeIcon icon={faUser} />
+                <FontAwesomeIcon className="text-secondary" icon={faUser} />
                 <input 
                     type="text" 
                     onChange={(e) => setUser(e.target.value)}
-                    className="border-2 border-black rounded-md p-2" 
+                    className="border-2 border-primary rounded-md p-2" 
                     placeholder="Username" 
                 />
             </div>
             <div className="flex flex-row gap-x-4 items-center">
-                <FontAwesomeIcon icon={faLock} />
+                <FontAwesomeIcon className="text-secondary" icon={faLock} />
                 <input 
                     type={show?"text":"password" }
                     onChange={(e) => setPassword(e.target.value)}
-                    className="border-2 border-black rounded-md p-2" 
+                    className="border-2 border-primary rounded-md p-2" 
                     placeholder="Password" 
                 />
-                <button onClick={() => setShow(!show)}>
-                    {show?<FontAwesomeIcon icon={faEyeSlash} />:<FontAwesomeIcon icon={faEye} />}
+                <button className="hover:scale-90 active:scale-105" onClick={() => setShow(!show)}>
+                    {show?<FontAwesomeIcon className="text-secondary" icon={faEyeSlash} />:<FontAwesomeIcon className="text-secondary" icon={faEye} />}
                 </button>
             </div>
             <a className="text-xs underline italic">Forgot password</a>
-            <span>Don't have an account? <a className="text-xs underline italic">Sign up</a></span>
-            <button onClick={handleLogin} className="border-2 p-4 rounded-lg hover:scale-95 active:scale-105">Log in</button>
-  
+            <span>Don't have an account? <Link to="register" className="link-accent link-hover text-xs italic">Sign up</Link></span>
+            <button onClick={handleLogin} className="btn btn-outline btn-primary border-2 p-4 hover:scale-95 active:scale-105">Log in</button>
           </div>
     )
 }

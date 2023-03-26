@@ -5,21 +5,25 @@ import {
     Route,
     Outlet
 } from "react-router-dom"
-import Home from './pages/home';
 import Sample from './pages/sample';
 import Login from './pages/login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
+import Analyse from './pages/analyse';
+import Navbar from './layout/navbar';
+
 const App = () => {
     return(
         <Router>
             <Routes>
                 <Route element={<Layout><Outlet /></Layout>}>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/sample" element={<Sample />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/" element={<Login />} />
                     <Route path="/register" element={<Register />} />
-                    <Route path="/profile" element={<Profile/>} />
+                    <Route element={<Navbar><Outlet /></Navbar>}>
+                        <Route path="/analyse" element={<Analyse />} />
+                        <Route path="/sample" element={<Sample />} />
+                        <Route path="/profile" element={<Profile/>} />
+                    </Route>
                 </Route>
             </Routes>
         </Router>

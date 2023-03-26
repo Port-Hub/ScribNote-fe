@@ -1,6 +1,6 @@
 const Register = () => {
     return (
-        <div className='flex flex-col gap-x-4 gap-y-8 p-10 gap-x-4 justify-evenly'>
+        <div className='flex flex-col gap-y-8 p-10 gap-x-4 justify-evenly'>
             <h2 className="text-center font-serif text-xl">CREATE YOUR ACCOUNT</h2>
             <div className="flex flex-row gap-2 gap-x-4 justify-between">
                 <p>Username</p>

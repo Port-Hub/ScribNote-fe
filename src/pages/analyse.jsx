@@ -1,10 +1,9 @@
 import { Component }from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Loader from '../components/loader';
 import StyleDrop from '../components/styledrop';
 
-class Home extends Component {
+class Analyse extends Component {
 
     constructor(props) {
         super(props);
@@ -51,12 +50,12 @@ class Home extends Component {
                         this.setState({analyse:false});
                     }).catch((error) => {
                         console.log(error);
-                        this.setState({message: error.response.data})
+                        this.setState({message: "Server : "+error.message})
                         this.setState({analyse:false});
                 });
             }).catch((error) => {
                 console.log(error);
-                this.setState({message: error.response.data})
+                this.setState({message: "Server : "+error.message})
                 this.setState({analyse:false});
         });
     }
@@ -65,18 +64,18 @@ class Home extends Component {
         return (
             <form encType="multipart/form-data" onSubmit={this.onFormSubmit}>
                 <div className="flex flex-col gap-10 items-center">
-                    <h1 className="text-center text-sky-700 text-4xl">ScribNote</h1>
-                    <h1 className="text-center text-sky-700 text-xl">File Upload</h1>
+                    <h1 className="text-center text-primary text-4xl">ScribNote</h1>
+                    <h1 className="text-center text-secondary text-xl">File Upload</h1>
                     <StyleDrop setFile={this.onDrop} files={this.state.list} />
-                    {this.state.message !== null | undefined?<p className='text-sky-600 text-md '>{this.state.message}</p>:""}
+                    {this.state.message !== null | undefined?<p className=' text-secondary text-md '>{this.state.message}</p>:""}
                     {sessionStorage.getItem("Summary")?<></>:
-                    <button type="submit"  className="border-2 shadow-xl shadow-sky-900 rounded-xl px-4 py-2 hover:scale-110 active:scale-90">
-                        {this.state.analyse?<Loader />:<p>Analyse</p>}</button>}
-                    {sessionStorage.getItem("Summary")?<Link className="border-2 shadow-xl shadow-sky-900 rounded-xl px-4 py-2 hover:scale-110 active:scale-90" to="sample">View PDF</Link>:<></>}
+                    <button type="submit"  className={this.state.analyse?"btn btn-outline btn-primary items-center border-2 shadow-xl shadow-neutral rounded-xl px-4 py-2 hover:scale-110 active:scale-90 loading":"btn btn-outline btn-primary items-center border-2 shadow-xl shadow-neutral rounded-xl px-4 py-2 hover:scale-110 active:scale-90 "}>
+                        Analyse</button>}
+                    {sessionStorage.getItem("Summary")?<Link className="button button-primary border-2 shadow-xl shadow-accent rounded-xl px-4 py-2 hover:scale-110 active:scale-90" to="sample">View PDF</Link>:<></>}
                 </div>
             </form>
         )
     }
 }
 
-export default Home;
+export default Analyse;
