@@ -64,7 +64,6 @@ class Analyse extends Component {
         return (
             <form encType="multipart/form-data" onSubmit={this.onFormSubmit}>
                 <div className="flex flex-col gap-10 items-center">
-                    <h1 className="text-center text-primary text-4xl">ScribNote</h1>
                     <h1 className="text-center text-secondary text-xl">File Upload</h1>
                     <StyleDrop setFile={this.onDrop} files={this.state.list} />
                     {this.state.message !== null | undefined?<p className=' text-secondary text-md '>{this.state.message}</p>:""}

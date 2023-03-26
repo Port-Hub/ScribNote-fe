@@ -19,11 +19,11 @@ const App = () => {
                 <Route element={<Layout><Outlet /></Layout>}>
                     <Route path="/" element={<Login />} />
                     <Route path="/register" element={<Register />} />
-                    <Route element={<Navbar><Outlet /></Navbar>}>
+                </Route>
+                <Route element={<Navbar><Outlet /></Navbar>}>
                         <Route path="/analyse" element={<Analyse />} />
                         <Route path="/sample" element={<Sample />} />
                         <Route path="/profile" element={<Profile/>} />
-                    </Route>
                 </Route>
             </Routes>
         </Router>
