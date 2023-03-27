@@ -1,23 +1,25 @@
 import { Link } from "react-router-dom";
+import { faUser, faMailBulk, faKey } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Register = () => {
     return (
         <div className='flex flex-col gap-y-8 p-10 gap-x-4 justify-evenly'>
             <h2 className="text-center text-primary font-serif text-xl">Create Your ScribNote Account</h2>
-            <div className="flex flex-row gap-2 gap-x-4 justify-between">
-                <p>Username</p>
+            <div className="flex flex-row justify-between">
+                <FontAwesomeIcon className="text-secondary" icon={faUser} />
                 <input type="text" className="border-2 border-primary rounded-md p-2" placeholder="Username"></input>
             </div>
-            <div className="flex flex-row gap-x-4 justify-between">
-                <p>Email</p>
+            <div className="flex flex-row justify-between">
+                <FontAwesomeIcon className="text-secondary" icon={faMailBulk} />
                 <input type="text" className="border-2 border-primary rounded-md p-2" placeholder="Email"></input>
             </div>
-            <div className="flex flex-row gap-x-4 justify-between">
-                <p>Password</p>
+            <div className="flex flex-row justify-between">
+                <FontAwesomeIcon className="text-secondary" icon={faKey} />
                 <input type="password" className="border-2 border-primary rounded-md p-2" placeholder="Password"></input>
             </div>
-            <div className="flex flex-row gap-x-4 justify-between">
-                <p className="text-wrap">Confirm Password</p>
+            <div className="flex flex-row justify-between">
+                <FontAwesomeIcon className="text-secondary" icon={faKey} />
                 <input type="password" className="border-2 border-primary rounded-md p-2" placeholder="Confirm Password"></input>
             </div>
             <div className="flex flex-row items-center">
