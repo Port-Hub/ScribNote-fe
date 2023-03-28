@@ -1,4 +1,4 @@
-const Profile = () => {
+const Profile: (arg: any) => JSX.Element = () => {
     return (
       <div>
         <div className='flex flex-col gap-y-8 p-10 gap-x-4 justify-evenly'>

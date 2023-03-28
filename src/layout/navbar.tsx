@@ -1,10 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 
-const Navbar = (props) => {
+const Navbar: (arg: any) => JSX.Element = (props) => {
 
-    const navigate = useNavigate();
+    const navigate: NavigateFunction = useNavigate();
 
-    const handleLogout = () => {
+    const handleLogout: (arg: any) => void = () => {
         localStorage.removeItem("token");
         navigate("/");
     }

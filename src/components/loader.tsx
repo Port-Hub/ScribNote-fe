@@ -1,4 +1,4 @@
-const Loader = () => {
+const Loader: (arg: any) => JSX.Element = () => {
     return(
       <div aria-label="Loading..." role="status">
         <svg className="h-10 w-10 animate-spin stroke-sky-700" viewBox="0 0 256 256">

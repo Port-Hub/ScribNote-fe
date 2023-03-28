@@ -1,6 +1,6 @@
 import { useDropzone } from 'react-dropzone';
 
-const StyleDrop = (props) => {
+const StyleDrop: (arg: any) => JSX.Element = (props) => {
   const {
     getRootProps,
     getInputProps,

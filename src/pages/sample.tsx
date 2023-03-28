@@ -29,12 +29,15 @@ const styles = StyleSheet.create({
   });
   
   // Create Document Component
-  function Sample() {
-    const[content,setContent] = useState();
+ const Sample: (arg: any) => JSX.Element = () => {
+
+    const [ content,setContent ] = useState<any>();
+
     useEffect(() => {
       setContent(sessionStorage.getItem("Summary"));
       console.log(sessionStorage.getItem("Summary"));
       }, []);
+
     return (
       <PDFViewer 
         style={styles.viewer}
@@ -48,7 +51,7 @@ const styles = StyleSheet.create({
             <View 
             //  style={styles.section}
             >
-              <Text className = "flex">{content}</Text>
+              <Text>{content}</Text>
             </View>
           </Page>
         </Document>

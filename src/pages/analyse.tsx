@@ -3,9 +3,18 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import StyleDrop from '../components/styledrop';
 
-class Analyse extends Component {
+interface IState {
+    file: any;
+    list: any;
+    analyse: boolean;
+    message: any;
+    backend: any;
+    paragraph: any;
+}
 
-    constructor(props) {
+class Analyse extends Component<{}, IState> {
+
+    constructor(props: any) {
         super(props);
         this.state ={
             file: null,
@@ -19,16 +28,16 @@ class Analyse extends Component {
         this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
-    onDrop = (acceptedFiles) => {
+    onDrop = (acceptedFiles: any) => {
         this.setState({file:acceptedFiles[0]});
-        this.setState({list : acceptedFiles.map(file => (
+        this.setState({list : acceptedFiles.map((file: any) => (
             <li key={file.path}>
               {file.path} - {file.size} bytes
             </li>
           ))});
       }
 
-    onFormSubmit(e){
+    onFormSubmit(e: any){
         this.setState({analyse:true});
         e.preventDefault();
         const formData = new FormData();
@@ -66,7 +75,7 @@ class Analyse extends Component {
                 <div className="flex flex-col gap-10 items-center">
                     <h1 className="text-center text-secondary text-xl">File Upload</h1>
                     <StyleDrop setFile={this.onDrop} files={this.state.list} />
-                    {this.state.message !== null | undefined?<p className=' text-secondary text-md '>{this.state.message}</p>:""}
+                    {this.state.message !== null || undefined?<p className=' text-secondary text-md '>{this.state.message}</p>:""}
                     {sessionStorage.getItem("Summary")?<></>:
                     <button type="submit"  className={this.state.analyse?"btn btn-outline btn-primary items-center border-2 shadow-xl shadow-neutral rounded-xl px-4 py-2 hover:scale-110 active:scale-90 loading":"btn btn-outline btn-primary items-center border-2 shadow-xl shadow-neutral rounded-xl px-4 py-2 hover:scale-110 active:scale-90 "}>
                         Analyse</button>}

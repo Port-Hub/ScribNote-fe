@@ -1,32 +1,32 @@
 import { faEye, faEyeSlash, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login: (arg: any) => JSX.Element = () => {
 
-    const [ user, setUser ] = useState("");
-    const [ password, setPassword ] = useState("");
-    const [ show, setShow ] = useState(false);
+    const [ user, setUser ] = useState<String>();
+    const [ password, setPassword ] = useState<String>();
+    const [ show, setShow ] = useState<Boolean>();
 
-    const navigate = useNavigate();
+    const navigate: NavigateFunction = useNavigate();
 
-    const handleLogin = async () => {
+    const handleLogin: (arg: any) => Promise<void> = async () => {
         await axios.post(
             import.meta.env.VITE_BACKEND_URL+"/auth/login",
             {
                 username: user,
                 password: password
             }
-        ).then((response) => {
-            const output = response.data
+        ).then((response: AxiosResponse<any,any>) => {
+            const output: any = response.data
             if(output.success)
             {
                 localStorage.setItem("token",output.token);
                 navigate("/analyse");
             }
-        }).catch((err) => {
+        }).catch((err: any) => {
             console.log(err);
         })
     }
