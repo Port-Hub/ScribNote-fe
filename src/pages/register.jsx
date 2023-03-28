@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { faUser, faMailBulk, faKey, faEye, faEyeSlash  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import axios from "axios";
 
 const Register = () => {
     const [ user, setUser ] = useState("");
@@ -9,8 +10,32 @@ const Register = () => {
     const [ password, setPassword ] = useState("");
     const [ show, setShow ] = useState(false);
     const [ confpassword, setConfpassword ] = useState("");
-    const [ cshow, setCshow ] = useState(false);
     const navigate = useNavigate();
+
+    if (password!==confpassword)
+    {
+        console.log("Passwords should be same")
+    }
+    else{
+            const handleLogin = async () => {
+                await axios.post(
+                 import.meta.env.VITE_BACKEND_URL+"/auth/register",
+                {
+                    username: user,
+                    email: mail,
+                    password: password
+                }
+                ).then((response) => {
+                const output = response.data
+                if(output.success)
+                {
+                    navigate("/");
+                 }
+                }).catch((err) => {
+                console.log(err);
+             })
+             }
+    }
 
     const handleRegister = () => {
         console.log("Register Done");
@@ -47,7 +72,7 @@ const Register = () => {
                 <FontAwesomeIcon className="text-secondary" icon={faKey} />
                 <input 
                 type={show?"text":"password" }
-                onChange={(e) => setConfpassword(e.taget.value)}
+                onChange={(e) => setConfpassword(e.target.value)}
                 className="border-2 border-primary rounded-md p-2" 
                 placeholder="Confirm Password"/>
                 <button className="hover:scale-90 active:scale-105" onClick={() => setShow(!show)}>
