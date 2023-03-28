@@ -12,34 +12,30 @@ const Register = () => {
     const [ confpassword, setConfpassword ] = useState("");
     const navigate = useNavigate();
 
-    if (password!==confpassword)
-    {
-        console.log("Passwords should be same")
-    }
-    else{
-            const handleLogin = async () => {
-                await axios.post(
-                 import.meta.env.VITE_BACKEND_URL+"/auth/register",
+    const handleRegister = async () => {
+        if(password !== confpassword)
+        {
+            console.log("Passwords should be same")
+        }
+        else
+        {
+            await axios.post(
+                import.meta.env.VITE_BACKEND_URL+"/auth/register",
                 {
                     username: user,
                     email: mail,
                     password: password
                 }
-                ).then((response) => {
+            ).then((response) => {
                 const output = response.data
                 if(output.success)
                 {
                     navigate("/");
-                 }
-                }).catch((err) => {
+                }
+            }).catch((err) => {
                 console.log(err);
-             })
-             }
-    }
-
-    const handleRegister = () => {
-        console.log("Register Done");
-        navigate("/analyse");
+            })
+        }
     }
     return (
         <div className='flex flex-col items-center gap-y-8 p-10 gap-x-4 justify-evenly'>
