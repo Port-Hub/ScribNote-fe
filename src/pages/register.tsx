@@ -11,13 +11,15 @@ const Register: (arg: any) => JSX.Element = () => {
     const [ password, setPassword ] = useState<String>();
     const [ show, setShow ] = useState<Boolean>();
     const [ confpassword, setConfpassword ] = useState<String>();
+    const [ analyse, setAnalyse ] = useState<Boolean>(false);
 
     const navigate: NavigateFunction = useNavigate();
 
     const handleRegister: (arg: any) => Promise<void> = async () => {
+        setAnalyse(true);
         if(password !== confpassword)
         {
-            console.log("Passwords should be same")
+            console.log("Passwords should be same");
         }
         else
         {
@@ -34,10 +36,17 @@ const Register: (arg: any) => JSX.Element = () => {
                 {
                     navigate("/");
                 }
+                else
+                {
+                    console.log(output.message);
+                }
+                setAnalyse(false);
             }).catch((err: any) => {
                 console.log(err);
+                setAnalyse(false);
             })
         }
+        setAnalyse(false);
     }
     return (
         <div className='flex flex-col items-center gap-y-8 p-10 gap-x-4 justify-evenly'>
@@ -84,7 +93,7 @@ const Register: (arg: any) => JSX.Element = () => {
                 </div>
             </div>
             <div className="flex flex-row items-center">
-            <button onClick={handleRegister} type="submit"  className="btn btn-outline btn-primary border-2 shadow-xl shadow-sky-900 px-4 py-2 hover:scale-110 active:scale-90">
+            <button onClick={handleRegister} type="submit"  className={analyse?"btn btn-outline btn-primary items-center border-2 shadow-xl shadow-neutral rounded-xl px-4 py-2 hover:scale-110 active:scale-90 loading":"btn btn-outline btn-primary items-center border-2 shadow-xl shadow-neutral rounded-xl px-4 py-2 hover:scale-110 active:scale-90 "}>
                 Register
             </button>
             </div>

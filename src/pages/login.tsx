@@ -9,10 +9,12 @@ const Login: (arg: any) => JSX.Element = () => {
     const [ user, setUser ] = useState<String>();
     const [ password, setPassword ] = useState<String>();
     const [ show, setShow ] = useState<Boolean>();
+    const [ analyse, setAnalyse ] = useState<Boolean>(false);
 
     const navigate: NavigateFunction = useNavigate();
 
     const handleLogin: (arg: any) => Promise<void> = async () => {
+        setAnalyse(true);
         await axios.post(
             import.meta.env.VITE_BACKEND_URL+"/auth/login",
             {
@@ -26,8 +28,14 @@ const Login: (arg: any) => JSX.Element = () => {
                 localStorage.setItem("token",output.token);
                 navigate("/analyse");
             }
+            else
+            {
+                console.log(output.message);
+            }
+            setAnalyse(false);
         }).catch((err: any) => {
             console.log(err);
+            setAnalyse(false);
         })
     }
 
@@ -57,7 +65,8 @@ const Login: (arg: any) => JSX.Element = () => {
             </div>
             <a className="text-xs underline italic">Forgot password</a>
             <span>Don't have an account? <Link to="register" className="link-accent link-hover text-xs italic">Sign up</Link></span>
-            <button onClick={handleLogin} className="btn btn-outline btn-primary border-2 p-4 hover:scale-95 active:scale-105">Log in</button>
+            <button onClick={handleLogin} className={analyse?"btn btn-outline btn-primary items-center border-2 shadow-xl shadow-neutral rounded-xl px-4 py-2 hover:scale-110 active:scale-90 loading":"btn btn-outline btn-primary items-center border-2 shadow-xl shadow-neutral rounded-xl px-4 py-2 hover:scale-110 active:scale-90 "}>Log in</button>
+            
           </div>
     )
 }
