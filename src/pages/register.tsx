@@ -53,33 +53,33 @@ const Register: (arg: any) => JSX.Element = () => {
             <h2 className="text-center text-primary font-serif text-xl">Create Your <br />ScribNote Account</h2>
             <div className="flex flex-col items-start gap-6">
                 <div className="flex flex-row items-center gap-x-4 justify-between">
-                    <FontAwesomeIcon className="text-secondary" icon={faUser} />
+                    <FontAwesomeIcon className="h-4 w-4 text-secondary" icon={faUser} />
                     <input type="text" 
                         onChange={(e) => setUser(e.target.value)}
                         className="border-2 border-primary rounded-md p-2" 
                         placeholder="Username"/>
                 </div>
                 <div className="flex flex-row items-center gap-x-4 justify-between">
-                    <FontAwesomeIcon className="text-secondary" icon={faMailBulk} />
+                    <FontAwesomeIcon className="h-4 w-4 text-secondary" icon={faMailBulk} />
                     <input type="text" 
                         onChange={(e) => setMail(e.target.value)}
                         className="border-2 border-primary rounded-md p-2"
                         placeholder="Email"/>
                 </div>
                 <div className="flex flex-row items-center gap-x-4 justify-between">
-                    <FontAwesomeIcon className="text-secondary" icon={faKey} />
+                    <FontAwesomeIcon className="h-4 w-4 text-secondary" icon={faKey} />
                     <div className="flex flex-row gap-x-2">
                         <input type={show?"text":"password" }
                             onChange={(e) => setPassword(e.target.value)}
                             className="border-2 border-primary rounded-md p-2" 
                             placeholder="Password"/>
                         <button className="hover:scale-90 active:scale-105" onClick={() => setShow(!show)}>
-                            {show?<FontAwesomeIcon className="text-secondary" icon={faEyeSlash} />:<FontAwesomeIcon className="text-secondary" icon={faEye} />}
+                            {show?<FontAwesomeIcon className="h-4 w-4 text-secondary" icon={faEyeSlash} />:<FontAwesomeIcon className="h-4 w-4 text-secondary" icon={faEye} />}
                         </button>
                     </div>
                 </div>
                 <div className="flex flex-row items-center gap-x-4 justify-between">
-                    <FontAwesomeIcon className="text-secondary" icon={faKey} />
+                    <FontAwesomeIcon className="h-4 w-4 text-secondary" icon={faKey} />
                     <div className="flex flex-row gap-x-2">
                         <input 
                             type={show?"text":"password" }
@@ -87,7 +87,7 @@ const Register: (arg: any) => JSX.Element = () => {
                             className="border-2 border-primary rounded-md p-2" 
                             placeholder="Confirm Password"/>
                         <button className="hover:scale-90 active:scale-105" onClick={() => setShow(!show)}>
-                            {show?<FontAwesomeIcon className="text-secondary" icon={faEyeSlash} />:<FontAwesomeIcon className="text-secondary" icon={faEye} />}
+                            {show?<FontAwesomeIcon className="h-4 w-4 text-secondary" icon={faEyeSlash} />:<FontAwesomeIcon className="h-4 w-4 text-secondary" icon={faEye} />}
                         </button>
                     </div>
                 </div>
